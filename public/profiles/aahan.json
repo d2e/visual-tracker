@@ -3,7 +3,7 @@
   "name": "Aahan",
   "emoji": "👦",
   "color": "indigo",
-  "activities": [
+  "schoolActivities": [
     {
       "id": "wakeup",
       "time": "06:30",
@@ -195,6 +195,188 @@
     },
     {
       "id": "sleep",
+      "time": "21:00",
+      "task": "Sleep Time",
+      "icon": "Moon",
+      "color": "indigo",
+      "mascot": "Zee",
+      "isMain": false
+    }
+  ],
+  "homeActivities": [
+    {
+      "id": "wakeup-home",
+      "time": "07:30",
+      "task": "Wake Up & Get Ready",
+      "icon": "Sun",
+      "color": "orange",
+      "mascot": "Zee",
+      "isMain": false
+    },
+    {
+      "id": "breakfast-home",
+      "time": "08:00",
+      "task": "Breakfast Time",
+      "icon": "Coffee",
+      "color": "orange",
+      "mascot": "Slick",
+      "isMain": false
+    },
+    {
+      "id": "morning-play",
+      "time": "08:30",
+      "task": "Morning Play Time",
+      "icon": "Gamepad2",
+      "color": "yellow",
+      "mascot": "Fuse",
+      "isMain": true
+    },
+    {
+      "id": "snack-home",
+      "time": "10:00",
+      "task": "Snack Break",
+      "icon": "Apple",
+      "color": "green",
+      "mascot": "Zee",
+      "isMain": false
+    },
+    {
+      "id": "creative-time",
+      "time": "10:15",
+      "task": "Creative Activities",
+      "icon": "Palette",
+      "color": "pink",
+      "mascot": "Bubbles",
+      "isMain": true
+    },
+    {
+      "id": "outdoor-time",
+      "time": "11:00",
+      "task": "Outdoor Play",
+      "icon": "TreePine",
+      "color": "green",
+      "mascot": "Fuse",
+      "isMain": true
+    },
+    {
+      "id": "lunch-home",
+      "time": "12:00",
+      "task": "Lunch Time",
+      "icon": "Utensils",
+      "color": "cyan",
+      "mascot": "Newt",
+      "isMain": false
+    },
+    {
+      "id": "rest-home",
+      "time": "12:45",
+      "task": "Rest/Quiet Time",
+      "icon": "PauseCircle",
+      "color": "green",
+      "mascot": "Zee",
+      "isMain": false
+    },
+    {
+      "id": "learning-home",
+      "time": "14:00",
+      "task": "Learning Activity",
+      "icon": "BookOpen",
+      "color": "blue",
+      "mascot": "Jeff",
+      "isMain": true
+    },
+    {
+      "id": "snack-afternoon",
+      "time": "15:00",
+      "task": "Snack Time",
+      "icon": "Apple",
+      "color": "yellow",
+      "mascot": "Slick",
+      "isMain": false
+    },
+    {
+      "id": "free-play",
+      "time": "15:15",
+      "task": "Free Play Time",
+      "icon": "Smile",
+      "color": "yellow",
+      "mascot": "Fuse",
+      "isMain": true
+    },
+    {
+      "id": "reading-home",
+      "time": "16:30",
+      "task": "Reading Time",
+      "icon": "BookOpen",
+      "color": "blue",
+      "mascot": "Jeff",
+      "isMain": false
+    },
+    {
+      "id": "family-activity",
+      "time": "17:00",
+      "task": "Family Activity",
+      "icon": "Heart",
+      "color": "pink",
+      "mascot": "Bubbles",
+      "isMain": true
+    },
+    {
+      "id": "dinner-home",
+      "time": "18:00",
+      "task": "Dinner Time",
+      "icon": "Utensils",
+      "color": "cyan",
+      "mascot": "Newt",
+      "isMain": false
+    },
+    {
+      "id": "evening-play",
+      "time": "18:30",
+      "task": "Evening Play",
+      "icon": "Gamepad2",
+      "color": "purple",
+      "mascot": "Fuse",
+      "isMain": false
+    },
+    {
+      "id": "bath-home",
+      "time": "19:30",
+      "task": "Bath Time",
+      "icon": "Bath",
+      "color": "blue",
+      "mascot": "Newt",
+      "isMain": false
+    },
+    {
+      "id": "get-ready-bed-home",
+      "time": "19:50",
+      "task": "Get Ready for Bed",
+      "icon": "Bed",
+      "color": "purple",
+      "mascot": "Zee",
+      "isMain": false
+    },
+    {
+      "id": "story-time-home",
+      "time": "20:00",
+      "task": "Story Time",
+      "icon": "BookOpen",
+      "color": "indigo",
+      "mascot": "Jeff",
+      "isMain": false
+    },
+    {
+      "id": "bedtime-routine-home",
+      "time": "20:30",
+      "task": "Bedtime Routine",
+      "icon": "Moon",
+      "color": "purple",
+      "mascot": "Zee",
+      "isMain": false
+    },
+    {
+      "id": "sleep-home",
       "time": "21:00",
       "task": "Sleep Time",
       "icon": "Moon",

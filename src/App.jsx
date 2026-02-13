@@ -46,7 +46,9 @@ import {
   CircleOff,
   Volume,
   Eye,
-  Hand
+  Hand,
+  TreePine,
+  Palette
 } from 'lucide-react';
 
 // Icon mapping from string names to components
@@ -71,6 +73,8 @@ const iconMap = {
   Moon,
   BookHeart,
   Trees,
+  TreePine,
+  Palette,
 };
 
 // Color mapping for activity backgrounds
@@ -108,6 +112,9 @@ const App = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [selectedProfile, setSelectedProfile] = useState(null);
+  const [scheduleType, setScheduleType] = useState(null);
+  const [scheduleType, setScheduleType] = useState(null);
+  const [scheduleType, setScheduleType] = useState(null);
   
   // Timer State
   const [activeTimerId, setActiveTimerId] = useState(null);
@@ -182,6 +189,7 @@ const App = () => {
     
     // Reset state
     setSelectedProfile(null);
+    setScheduleType(null);
     setCompletedItems({});
     setStars({});
     setSettings({
@@ -265,7 +273,8 @@ const App = () => {
       .then(data => {
         setSelectedProfile({
           ...profile,
-          activities: data.activities,
+          schoolActivities: data.schoolActivities || data.activities || [],
+          homeActivities: data.homeActivities || data.activities || [],
           mascots: data.mascots
         });
         setLoading(false);
@@ -274,6 +283,14 @@ const App = () => {
         setError(err.message);
         setLoading(false);
       });
+  };
+
+  // Get activities based on schedule type
+  const getActivities = () => {
+    if (!selectedProfile) return [];
+    if (scheduleType === 'school') return selectedProfile.schoolActivities;
+    if (scheduleType === 'home') return selectedProfile.homeActivities;
+    return [];
   };
 
   // Helper function to get icon component
@@ -477,24 +494,83 @@ const App = () => {
     );
   }
 
+  // Schedule Type Selection Screen
+  if (selectedProfile && !scheduleType) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-sky-100 via-indigo-100 to-purple-100 flex items-center justify-center p-4">
+        <div className="max-w-2xl w-full">
+          <div className="text-center mb-8 sm:mb-12">
+            <div className="text-6xl sm:text-7xl mb-4">{selectedProfile.emoji}</div>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-800 mb-3">
+              Hi {selectedProfile.name}!
+            </h1>
+            <p className="text-lg sm:text-xl text-slate-600 font-medium">
+              What's your day like today?
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+            <button
+              onClick={() => setScheduleType('school')}
+              className="group bg-white rounded-3xl p-8 sm:p-10 shadow-xl hover:shadow-2xl active:scale-95 transition-all duration-200 border-4 border-white hover:border-blue-300"
+            >
+              <div className="w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-4 rounded-full bg-blue-100 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <BookOpen className="w-12 h-12 sm:w-14 sm:h-14 text-blue-600" />
+              </div>
+              <h3 className="text-2xl sm:text-3xl font-black text-slate-800 group-hover:text-blue-600 transition-colors">
+                School Day
+              </h3>
+              <p className="text-sm text-slate-500 mt-2">
+                Time for learning!
+              </p>
+            </button>
+
+            <button
+              onClick={() => setScheduleType('home')}
+              className="group bg-white rounded-3xl p-8 sm:p-10 shadow-xl hover:shadow-2xl active:scale-95 transition-all duration-200 border-4 border-white hover:border-green-300"
+            >
+              <div className="w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-4 rounded-full bg-green-100 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <Heart className="w-12 h-12 sm:w-14 sm:h-14 text-green-600" />
+              </div>
+              <h3 className="text-2xl sm:text-3xl font-black text-slate-800 group-hover:text-green-600 transition-colors">
+                Home Day
+              </h3>
+              <p className="text-sm text-slate-500 mt-2">
+                Time for fun!
+              </p>
+            </button>
+          </div>
+
+          <button
+            onClick={() => { setSelectedProfile(null); setScheduleType(null); }}
+            className="mt-6 w-full py-3 bg-white/50 hover:bg-white text-slate-700 font-bold rounded-2xl transition-all"
+          >
+            ← Back to Profiles
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   // Ensure we have a valid profile before rendering tracker
   if (!selectedProfile) {
     return null;
   }
 
-  const currentProfile = selectedProfile;
-  const completedCount = currentProfile.activities.filter(item => completedItems[`${currentDay}-${item.id}`]).length;
-  const progressPercent = (completedCount / currentProfile.activities.length) * 100;
+  const currentActivities = getActivities();
+  const currentProfile = { ...selectedProfile, activities: currentActivities };
+  const completedCount = currentActivities.filter(item => completedItems[`${currentDay}-${item.id}`]).length;
+  const progressPercent = currentActivities.length > 0 ? (completedCount / currentActivities.length) * 100 : 0;
   const totalStars = stars[`${currentProfile.id}-${currentDay}`] || 0;
   
   // Find next incomplete activity
-  const nextActivity = currentProfile.activities.find(item => !completedItems[`${currentDay}-${item.id}`]);
+  const nextActivity = currentActivities.find(item => !completedItems[`${currentDay}-${item.id}`]);
   
   // Find current, then, and next activities for First-Then-Next
-  const currentActivityIndex = currentProfile.activities.findIndex(item => item.id === activeTimerId || !completedItems[`${currentDay}-${item.id}`]);
-  const currentActivityObj = currentProfile.activities[currentActivityIndex];
-  const thenActivity = currentProfile.activities[currentActivityIndex + 1];
-  const nextAfterActivity = currentProfile.activities[currentActivityIndex + 2];
+  const currentActivityIndex = currentActivities.findIndex(item => item.id === activeTimerId || !completedItems[`${currentDay}-${item.id}`]);
+  const currentActivityObj = currentActivities[currentActivityIndex];
+  const thenActivity = currentActivities[currentActivityIndex + 1];
+  const nextAfterActivity = currentActivities[currentActivityIndex + 2];
 
   // Visual Countdown Pie Chart
   const PieTimer = ({ percentage }) => {
@@ -794,6 +870,14 @@ const App = () => {
 
         <div className="mt-6 space-y-3">
           <button 
+            onClick={() => { setScheduleType(null); setShowSettings(false); }}
+            className="w-full py-3 bg-blue-500 text-white rounded-xl font-bold active:bg-blue-600 flex items-center justify-center gap-2"
+          >
+            <RotateCcw className="w-5 h-5" />
+            Change Schedule Type
+          </button>
+          
+          <button 
             onClick={() => setShowSettings(false)}
             className="w-full py-3 bg-indigo-500 text-white rounded-xl font-bold active:bg-indigo-600"
           >
@@ -895,6 +979,10 @@ const App = () => {
                 <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-tight leading-none mb-1">{currentProfile.name}</h1>
                 <div className="flex items-center justify-center gap-1 sm:gap-2 px-2 sm:px-3 md:px-4 py-1 md:py-2 rounded-full w-fit mx-auto">
                   <span className="text-xs sm:text-sm md:text-base font-medium text-indigo-100">{currentDay}</span>
+                  <span className="text-indigo-300 mx-1">•</span>
+                  <span className="text-xs sm:text-sm md:text-base font-bold text-white">
+                    {scheduleType === 'school' ? '🎓 School' : '🏠 Home'}
+                  </span>
                 </div>
                 <div className="text-xs sm:text-sm text-indigo-200 mt-1">
                   {completedCount} of {currentProfile.activities.length} completed
