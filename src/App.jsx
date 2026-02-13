@@ -384,29 +384,54 @@ const App = () => {
       if (activeTimerId) {
         const key = `${currentDay}-${activeTimerId}`;
         if (!completedItems[key]) {
-          toggleTask(currentDay, activeTimerId);
-        }
-        
-        // After 2 seconds, move focus to next activity
-        setTimeout(() => {
-          // Find current activities based on schedule type
-          const currentActivities = scheduleType === 'school' 
-            ? selectedProfile?.schoolActivities 
-            : selectedProfile?.homeActivities;
+          // Complete the task
+          const newCompletedItems = {
+            ...completedItems,
+            [key]: true
+          };
           
-          if (currentActivities) {
-            const currentIndex = currentActivities.findIndex(act => act.id === activeTimerId);
-            const nextActivity = currentActivities[currentIndex + 1];
+          setCompletedItems(newCompletedItems);
+          
+          // Award stars and tokens
+          if (selectedProfile) {
+            playSound('complete');
+            awardStar(selectedProfile.id, activeTimerId);
+            setLastCompletedTask(activeTimerId);
+            setTokens(prev => prev + 1);
             
-            if (nextActivity && !completedItems[`${currentDay}-${nextActivity.id}`]) {
-              // Scroll to next activity
-              const nextElement = document.getElementById(`activity-${nextActivity.id}`);
-              if (nextElement) {
-                nextElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-              }
+            // Check if all activities are now complete
+            const currentActivities = scheduleType === 'school' 
+              ? selectedProfile.schoolActivities 
+              : selectedProfile.homeActivities;
+            
+            const allComplete = currentActivities.every(activity => 
+              newCompletedItems[`${currentDay}-${activity.id}`]
+            );
+            
+            if (allComplete) {
+              // Trigger fireworks for completing all activities
+              setShowFireworks(true);
+              playSound('star');
+              setTimeout(() => setShowFireworks(false), 10000);
+            } else {
+              // After 2 seconds, move focus to next activity
+              setTimeout(() => {
+                if (currentActivities) {
+                  const currentIndex = currentActivities.findIndex(act => act.id === activeTimerId);
+                  const nextActivity = currentActivities[currentIndex + 1];
+                  
+                  if (nextActivity && !newCompletedItems[`${currentDay}-${nextActivity.id}`]) {
+                    // Scroll to next activity
+                    const nextElement = document.getElementById(`activity-${nextActivity.id}`);
+                    if (nextElement) {
+                      nextElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                  }
+                }
+              }, 2000);
             }
           }
-        }, 2000);
+        }
       }
       
       setActiveTimerId(null);
@@ -458,7 +483,7 @@ const App = () => {
       if (allComplete) {
         setShowFireworks(true);
         playSound('star');
-        setTimeout(() => setShowFireworks(false), 5000);
+        setTimeout(() => setShowFireworks(false), 10000);
       }
     }
     
