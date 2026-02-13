@@ -1,0 +1,18 @@
+{
+  "profiles": [
+    {
+      "id": "aahan",
+      "name": "Aahan",
+      "emoji": "👦",
+      "color": "indigo",
+      "file": "profiles/aahan.json"
+    },
+    {
+      "id": "rahul",
+      "name": "Rahul",
+      "emoji": "🧒",
+      "color": "emerald",
+      "file": "profiles/rahul.json"
+    }
+  ]
+}
