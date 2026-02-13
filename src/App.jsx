@@ -386,12 +386,33 @@ const App = () => {
         if (!completedItems[key]) {
           toggleTask(currentDay, activeTimerId);
         }
+        
+        // After 2 seconds, move focus to next activity
+        setTimeout(() => {
+          // Find current activities based on schedule type
+          const currentActivities = scheduleType === 'school' 
+            ? selectedProfile?.schoolActivities 
+            : selectedProfile?.homeActivities;
+          
+          if (currentActivities) {
+            const currentIndex = currentActivities.findIndex(act => act.id === activeTimerId);
+            const nextActivity = currentActivities[currentIndex + 1];
+            
+            if (nextActivity && !completedItems[`${currentDay}-${nextActivity.id}`]) {
+              // Scroll to next activity
+              const nextElement = document.getElementById(`activity-${nextActivity.id}`);
+              if (nextElement) {
+                nextElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              }
+            }
+          }
+        }, 2000);
       }
       
       setActiveTimerId(null);
     }
     return () => clearInterval(interval);
-  }, [timerRunning, timeLeft, show5MinWarning, activeTimerId, currentDay, completedItems]);
+  }, [timerRunning, timeLeft, show5MinWarning, activeTimerId, currentDay, completedItems, scheduleType, selectedProfile]);
 
   const startTaskTimer = (id, mins) => {
     setActiveTimerId(id);
@@ -1127,7 +1148,11 @@ const App = () => {
             const mascotColorClass = mascotColorMap[mascot?.color] || mascotColorMap.blue;
             
             return (
-              <div key={item.id} className="relative overflow-hidden rounded-2xl sm:rounded-[32px]">
+              <div 
+                key={item.id} 
+                id={`activity-${item.id}`}
+                className="relative overflow-hidden rounded-2xl sm:rounded-[32px]"
+              >
                 {/* Timer Progress Overlay - covers entire activity */}
                 {isTimerActive && !isCompleted && (
                   <div className="absolute inset-0 pointer-events-none z-0">
