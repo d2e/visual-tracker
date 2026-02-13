@@ -132,6 +132,7 @@ const App = () => {
   });
   const [showCelebration, setShowCelebration] = useState(false);
   const [lastCompletedTask, setLastCompletedTask] = useState(null);
+  const [showFireworks, setShowFireworks] = useState(false);
   const audioContextRef = useRef(null);
 
   // Autism-Friendly Visual Features State
@@ -401,10 +402,12 @@ const App = () => {
     const key = `${day}-${taskId}`;
     const wasCompleted = completedItems[key];
     
-    setCompletedItems(prev => ({
-      ...prev,
-      [key]: !prev[key]
-    }));
+    const newCompletedItems = {
+      ...completedItems,
+      [key]: !completedItems[key]
+    };
+    
+    setCompletedItems(newCompletedItems);
     
     // Award star and token when completing (not uncompleting)
     if (!wasCompleted && selectedProfile) {
@@ -412,6 +415,21 @@ const App = () => {
       awardStar(selectedProfile.id, taskId);
       setLastCompletedTask(taskId);
       setTokens(prev => prev + 1);
+      
+      // Check if all activities are now complete
+      const currentActivities = scheduleType === 'school' 
+        ? selectedProfile.schoolActivities 
+        : selectedProfile.homeActivities;
+      
+      const allComplete = currentActivities.every(activity => 
+        newCompletedItems[`${day}-${activity.id}`]
+      );
+      
+      if (allComplete) {
+        setShowFireworks(true);
+        playSound('star');
+        setTimeout(() => setShowFireworks(false), 5000);
+      }
     }
     
     if (activeTimerId === taskId) {
@@ -902,6 +920,40 @@ const App = () => {
 
   return (
     <div className="min-h-screen bg-sky-100 p-2 sm:p-4 md:p-8 lg:p-12 font-sans pb-20">
+      {/* Fireworks Celebration - All Activities Complete */}
+      {showFireworks && (
+        <div className="fixed inset-0 pointer-events-none z-[100] overflow-hidden">
+          {/* Fireworks particles */}
+          {[...Array(20)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute w-4 h-4 rounded-full animate-ping"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                backgroundColor: ['#ff6b6b', '#4ecdc4', '#ffe66d', '#a8e6cf', '#ff8b94'][i % 5],
+                animationDelay: `${Math.random() * 2}s`,
+                animationDuration: `${1 + Math.random()}s`
+              }}
+            />
+          ))}
+          {/* Main celebration message */}
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-white px-8 py-6 rounded-3xl shadow-2xl animate-bounce">
+              <div className="text-5xl sm:text-6xl md:text-7xl font-black text-center mb-4">
+                🎉 🎊 🎆
+              </div>
+              <div className="text-3xl sm:text-4xl md:text-5xl font-black text-center">
+                ALL DONE!
+              </div>
+              <div className="text-xl sm:text-2xl font-bold text-center mt-2">
+                Amazing Job! 🌟
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Celebration Overlay */}
       {showCelebration && (
         <div className="fixed inset-0 pointer-events-none z-50 flex items-center justify-center">
