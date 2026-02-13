@@ -75,6 +75,7 @@ const iconMap = {
   Trees,
   TreePine,
   Palette,
+  Bell,
 };
 
 // Color mapping for activity backgrounds
