@@ -1,86 +1,183 @@
 {
-  "title": "Aahan",
-  "activities": [
+  "profiles": [
     {
-      "id": "breakfast",
-      "time": "07:30",
-      "task": "Breakfast Time",
-      "icon": "Coffee",
-      "color": "orange",
-      "mascot": "Slick",
-      "isMain": false
+      "id": "aahan",
+      "name": "Aahan",
+      "emoji": "👦",
+      "color": "indigo",
+      "activities": [
+        {
+          "id": "breakfast",
+          "time": "07:30",
+          "task": "Breakfast Time",
+          "icon": "Coffee",
+          "color": "orange",
+          "mascot": "Slick",
+          "isMain": false
+        },
+        {
+          "id": "study",
+          "time": "08:15",
+          "task": "Specific Study",
+          "icon": "BookOpen",
+          "color": "blue",
+          "mascot": "Jeff",
+          "isMain": false
+        },
+        {
+          "id": "break1",
+          "time": "09:00",
+          "task": "Short Break",
+          "icon": "PauseCircle",
+          "color": "green",
+          "mascot": "Zee",
+          "isMain": false
+        },
+        {
+          "id": "math",
+          "time": "09:15",
+          "task": "Math Activity",
+          "icon": "Calculator",
+          "color": "purple",
+          "mascot": "Bubbles",
+          "isMain": true
+        },
+        {
+          "id": "break2",
+          "time": "10:00",
+          "task": "Snack & Break",
+          "icon": "PauseCircle",
+          "color": "green",
+          "mascot": "Zee",
+          "isMain": false
+        },
+        {
+          "id": "sports",
+          "time": "10:30",
+          "task": "Sports Play",
+          "icon": "Trophy",
+          "color": "yellow",
+          "mascot": "Fuse",
+          "isMain": true
+        },
+        {
+          "id": "lunch",
+          "time": "11:30",
+          "task": "Lunch & Ready",
+          "icon": "Utensils",
+          "color": "cyan",
+          "mascot": "Newt",
+          "isMain": false
+        },
+        {
+          "id": "departure",
+          "time": "12:30",
+          "task": "Leaving for School",
+          "icon": "Car",
+          "color": "red",
+          "mascot": "Pogo",
+          "isMain": false
+        }
+      ],
+      "mascots": [
+        { "name": "Fuse", "color": "red", "emoji": "🐭" },
+        { "name": "Pogo", "color": "blue", "emoji": "🐭" },
+        { "name": "Newt", "color": "pink", "emoji": "🐭" },
+        { "name": "Bubbles", "color": "yellow", "emoji": "🐭" },
+        { "name": "Zee", "color": "green", "emoji": "🐭" },
+        { "name": "Slick", "color": "orange", "emoji": "🐭" },
+        { "name": "Jeff", "color": "purple", "emoji": "🐭" }
+      ]
     },
     {
-      "id": "study",
-      "time": "08:15",
-      "task": "Specific Study",
-      "icon": "BookOpen",
+      "id": "rahul",
+      "name": "Rahul",
+      "emoji": "🧒",
       "color": "blue",
-      "mascot": "Jeff",
-      "isMain": false
-    },
-    {
-      "id": "break1",
-      "time": "09:00",
-      "task": "Short Break",
-      "icon": "PauseCircle",
-      "color": "green",
-      "mascot": "Zee",
-      "isMain": false
-    },
-    {
-      "id": "math",
-      "time": "09:15",
-      "task": "Math Activity",
-      "icon": "Calculator",
-      "color": "purple",
-      "mascot": "Bubbles",
-      "isMain": true
-    },
-    {
-      "id": "break2",
-      "time": "10:00",
-      "task": "Snack & Break",
-      "icon": "PauseCircle",
-      "color": "green",
-      "mascot": "Zee",
-      "isMain": false
-    },
-    {
-      "id": "sports",
-      "time": "10:30",
-      "task": "Sports Play",
-      "icon": "Trophy",
-      "color": "yellow",
-      "mascot": "Fuse",
-      "isMain": true
-    },
-    {
-      "id": "lunch",
-      "time": "11:30",
-      "task": "Lunch & Ready",
-      "icon": "Utensils",
-      "color": "cyan",
-      "mascot": "Newt",
-      "isMain": false
-    },
-    {
-      "id": "departure",
-      "time": "12:30",
-      "task": "Leaving for School",
-      "icon": "Car",
-      "color": "red",
-      "mascot": "Pogo",
-      "isMain": false
+      "activities": [
+        {
+          "id": "wakeup",
+          "time": "07:00",
+          "task": "Wake Up & Fresh",
+          "icon": "Sun",
+          "color": "yellow",
+          "mascot": "Sunny",
+          "isMain": false
+        },
+        {
+          "id": "breakfast",
+          "time": "07:45",
+          "task": "Breakfast Time",
+          "icon": "Apple",
+          "color": "red",
+          "mascot": "Ruby",
+          "isMain": false
+        },
+        {
+          "id": "homework",
+          "time": "08:30",
+          "task": "Homework Time",
+          "icon": "Pencil",
+          "color": "blue",
+          "mascot": "Sky",
+          "isMain": true
+        },
+        {
+          "id": "reading",
+          "time": "09:30",
+          "task": "Reading Books",
+          "icon": "BookOpen",
+          "color": "purple",
+          "mascot": "Violet",
+          "isMain": false
+        },
+        {
+          "id": "playtime",
+          "time": "10:00",
+          "task": "Play Time",
+          "icon": "Gamepad2",
+          "color": "green",
+          "mascot": "Lucky",
+          "isMain": true
+        },
+        {
+          "id": "music",
+          "time": "11:00",
+          "task": "Music Practice",
+          "icon": "Music",
+          "color": "pink",
+          "mascot": "Melody",
+          "isMain": false
+        },
+        {
+          "id": "lunch",
+          "time": "12:00",
+          "task": "Lunch Time",
+          "icon": "Utensils",
+          "color": "orange",
+          "mascot": "Tangy",
+          "isMain": false
+        },
+        {
+          "id": "rest",
+          "time": "13:00",
+          "task": "Rest Time",
+          "icon": "Bed",
+          "color": "cyan",
+          "mascot": "Dreamy",
+          "isMain": false
+        }
+      ],
+      "mascots": [
+        { "name": "Sunny", "color": "yellow", "emoji": "🐭" },
+        { "name": "Ruby", "color": "red", "emoji": "🐭" },
+        { "name": "Sky", "color": "blue", "emoji": "🐭" },
+        { "name": "Violet", "color": "purple", "emoji": "🐭" },
+        { "name": "Lucky", "color": "green", "emoji": "🐭" },
+        { "name": "Melody", "color": "pink", "emoji": "🐭" },
+        { "name": "Tangy", "color": "orange", "emoji": "🐭" },
+        { "name": "Dreamy", "color": "cyan", "emoji": "🐭" }
+      ]
     }
-  ],
-  "mascots": [
-    { "name": "Fuse", "color": "red", "emoji": "🔴" },
-    { "name": "Pogo", "color": "blue", "emoji": "🔵" },
-    { "name": "Newt", "color": "pink", "emoji": "💗" },
-    { "name": "Bubbles", "color": "yellow", "emoji": "💛" },
-    { "name": "Zee", "color": "green", "emoji": "💚" },
-    { "name": "Slick", "color": "orange", "emoji": "🟠" },
-    { "name": "Jeff", "color": "purple", "emoji": "💜" }
   ]
 }
