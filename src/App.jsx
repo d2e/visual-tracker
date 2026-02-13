@@ -128,7 +128,9 @@ const App = () => {
   const [settings, setSettings] = useState({
     soundEnabled: true,
     animationsEnabled: true,
-    breakReminders: true
+    breakReminders: true,
+    calmMode: false,
+    fireworksEnabled: true
   });
   const [showCelebration, setShowCelebration] = useState(false);
   const [lastCompletedTask, setLastCompletedTask] = useState(null);
@@ -140,7 +142,6 @@ const App = () => {
   const [sensoryLevel, setSensoryLevel] = useState('green'); // green, yellow, red
   const [showBreakMenu, setShowBreakMenu] = useState(false);
   const [showCommunicationHelper, setShowCommunicationHelper] = useState(false);
-  const [tokens, setTokens] = useState(0);
   const [currentSteps, setCurrentSteps] = useState({});
 
   const safeDayIndex = Math.max(0, Math.min(4, currentDayIndex));
@@ -397,7 +398,6 @@ const App = () => {
             playSound('complete');
             awardStar(selectedProfile.id, activeTimerId);
             setLastCompletedTask(activeTimerId);
-            setTokens(prev => prev + 1);
             
             // Check if all activities are now complete
             const currentActivities = scheduleType === 'school' 
@@ -408,7 +408,7 @@ const App = () => {
               newCompletedItems[`${currentDay}-${activity.id}`]
             );
             
-            if (allComplete) {
+            if (allComplete && settings.fireworksEnabled) {
               // Trigger fireworks for completing all activities
               setShowFireworks(true);
               playSound('star');
@@ -468,7 +468,6 @@ const App = () => {
       playSound('complete');
       awardStar(selectedProfile.id, taskId);
       setLastCompletedTask(taskId);
-      setTokens(prev => prev + 1);
       
       // Check if all activities are now complete
       const currentActivities = scheduleType === 'school' 
@@ -479,7 +478,7 @@ const App = () => {
         newCompletedItems[`${day}-${activity.id}`]
       );
       
-      if (allComplete) {
+      if (allComplete && settings.fireworksEnabled) {
         setShowFireworks(true);
         playSound('star');
       }
@@ -936,6 +935,32 @@ const App = () => {
               <div className={`w-5 h-5 bg-white rounded-full transition-transform ${settings.breakReminders ? 'translate-x-6' : 'translate-x-1'}`}></div>
             </button>
           </div>
+
+          <div className="flex items-center justify-between p-4 bg-purple-50 rounded-xl border-2 border-purple-200">
+            <div className="flex items-center gap-2">
+              <Eye className="w-5 h-5 text-purple-600" />
+              <span className="font-bold text-purple-800">Calm Mode</span>
+            </div>
+            <button 
+              onClick={() => setSettings(prev => ({ ...prev, calmMode: !prev.calmMode }))}
+              className={`w-12 h-6 rounded-full transition-colors ${settings.calmMode ? 'bg-purple-500' : 'bg-slate-300'}`}
+            >
+              <div className={`w-5 h-5 bg-white rounded-full transition-transform ${settings.calmMode ? 'translate-x-6' : 'translate-x-1'}`}></div>
+            </button>
+          </div>
+
+          <div className="flex items-center justify-between p-4 bg-slate-50 rounded-xl">
+            <div className="flex items-center gap-2">
+              <Sparkles className="w-5 h-5" />
+              <span className="font-bold">Fireworks</span>
+            </div>
+            <button 
+              onClick={() => setSettings(prev => ({ ...prev, fireworksEnabled: !prev.fireworksEnabled }))}
+              className={`w-12 h-6 rounded-full transition-colors ${settings.fireworksEnabled ? 'bg-green-500' : 'bg-slate-300'}`}
+            >
+              <div className={`w-5 h-5 bg-white rounded-full transition-transform ${settings.fireworksEnabled ? 'translate-x-6' : 'translate-x-1'}`}></div>
+            </button>
+          </div>
         </div>
 
         <div className="mt-6 space-y-3">
@@ -1251,22 +1276,19 @@ const App = () => {
       <TrafficLightSensory />
 
       {/* Floating Stars Counter */}
-      <div className="fixed left-4 top-24 z-40 bg-gradient-to-br from-yellow-300 to-yellow-400 text-yellow-900 px-4 py-3 rounded-2xl shadow-2xl border-4 border-yellow-500">
+      <div className={`fixed left-4 top-24 z-40 px-4 py-3 rounded-2xl shadow-2xl ${
+        settings.calmMode 
+          ? 'bg-slate-100 text-slate-700 border-2 border-slate-300' 
+          : 'bg-gradient-to-br from-yellow-300 to-yellow-400 text-yellow-900 border-4 border-yellow-500'
+      }`}>
         <div className="flex flex-col items-center gap-2">
           {/* Stars Display */}
           <div className="flex flex-col items-center">
-            <Star className="w-8 h-8 sm:w-10 sm:h-10 fill-current animate-spin" style={{ animationDuration: '3s' }} />
+            <Star className={`w-8 h-8 sm:w-10 sm:h-10 fill-current ${
+              settings.calmMode ? '' : 'animate-spin'
+            }`} style={{ animationDuration: '3s' }} />
             <span className="text-2xl sm:text-3xl font-black">{totalStars}</span>
             <span className="text-xs font-bold uppercase tracking-wide">Stars</span>
-          </div>
-          
-          {/* Tokens Display */}
-          <div className="w-full border-t-2 border-yellow-500 pt-2">
-            <div className="flex flex-col items-center">
-              <Gift className="w-6 h-6 sm:w-8 sm:h-8" />
-              <span className="text-xl sm:text-2xl font-black">{Math.min(tokens, 10)}/10</span>
-              <span className="text-xs font-bold uppercase tracking-wide">Tokens</span>
-            </div>
           </div>
         </div>
       </div>
@@ -1441,7 +1463,7 @@ const App = () => {
                       
                       {/* Mascot badge */}
                       {mascot && (
-                        <div className={`absolute -top-1 -right-1 sm:-top-2 sm:-right-2 w-8 h-8 sm:w-10 sm:h-10 md:w-14 md:h-14 rounded-full border-2 sm:border-4 border-white flex items-center justify-center text-base sm:text-lg md:text-2xl shadow-lg ${isTimerActive ? 'animate-bounce' : ''} ${mascotColorClass} overflow-hidden`}>
+                        <div className={`absolute -top-1 -right-1 sm:-top-2 sm:-right-2 w-8 h-8 sm:w-10 sm:h-10 md:w-14 md:h-14 rounded-full border-2 sm:border-4 border-white flex items-center justify-center text-base sm:text-lg md:text-2xl shadow-lg ${isTimerActive && !settings.calmMode ? 'animate-bounce' : ''} ${mascotColorClass} overflow-hidden`}>
                           {mascot.image ? (
                             <img src={mascot.image} alt={mascot.name} className="w-full h-full object-cover" />
                           ) : (

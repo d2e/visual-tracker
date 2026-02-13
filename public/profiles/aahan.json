@@ -9,52 +9,16 @@
       "time": "07:15",
       "task": "Catch School Bus",
       "icon": "Car",
-      "color": "orange",
-      "mascot": "Pogo",
+      "color": "blue",
+      "mascot": "Fuse",
       "isMain": false
     },
     {
-      "id": "arrival",
+      "id": "school-time",
       "time": "08:00",
-      "task": "Arrive at School",
+      "task": "School Time",
       "icon": "BookOpen",
       "color": "blue",
-      "mascot": "Jeff",
-      "isMain": false
-    },
-    {
-      "id": "morning-assembly",
-      "time": "08:15",
-      "task": "Morning Assembly",
-      "icon": "Bell",
-      "color": "yellow",
-      "mascot": "Bubbles",
-      "isMain": false
-    },
-    {
-      "id": "breakfast-school",
-      "time": "08:30",
-      "task": "Breakfast Time",
-      "icon": "Coffee",
-      "color": "orange",
-      "mascot": "Slick",
-      "isMain": false
-    },
-    {
-      "id": "class-1",
-      "time": "09:00",
-      "task": "First Class",
-      "icon": "BookOpen",
-      "color": "blue",
-      "mascot": "Jeff",
-      "isMain": true
-    },
-    {
-      "id": "class-2",
-      "time": "10:00",
-      "task": "Second Class",
-      "icon": "Pencil",
-      "color": "purple",
       "mascot": "Jeff",
       "isMain": true
     },
@@ -68,30 +32,21 @@
       "isMain": false
     },
     {
-      "id": "class-3",
-      "time": "11:15",
-      "task": "Third Class",
-      "icon": "Calculator",
-      "color": "indigo",
-      "mascot": "Bubbles",
-      "isMain": true
-    },
-    {
-      "id": "school-end",
+      "id": "bus-home",
       "time": "12:30",
-      "task": "School Ends",
-      "icon": "Bell",
-      "color": "cyan",
-      "mascot": "Bubbles",
+      "task": "School Bus Home",
+      "icon": "Car",
+      "color": "blue",
+      "mascot": "Fuse",
       "isMain": false
     },
     {
-      "id": "bus-home",
-      "time": "12:40",
-      "task": "School Bus Home",
-      "icon": "Car",
-      "color": "red",
-      "mascot": "Pogo",
+      "id": "lunch-home",
+      "time": "13:00",
+      "task": "Lunch Time",
+      "icon": "Utensils",
+      "color": "yellow",
+      "mascot": "Bubbles",
       "isMain": false
     }
   ],
@@ -101,26 +56,17 @@
       "time": "08:00",
       "task": "Wake Up & Breakfast",
       "icon": "Sun",
-      "color": "orange",
+      "color": "yellow",
       "mascot": "Zee",
       "isMain": false
     },
     {
       "id": "morning-play",
       "time": "09:00",
-      "task": "Morning Play Time",
+      "task": "Morning Activity",
       "icon": "Gamepad2",
-      "color": "yellow",
+      "color": "green",
       "mascot": "Fuse",
-      "isMain": true
-    },
-    {
-      "id": "creative-time",
-      "time": "10:30",
-      "task": "Arts & Crafts",
-      "icon": "Palette",
-      "color": "pink",
-      "mascot": "Bubbles",
       "isMain": true
     },
     {
@@ -128,35 +74,17 @@
       "time": "12:30",
       "task": "Lunch Time",
       "icon": "Utensils",
-      "color": "cyan",
-      "mascot": "Newt",
-      "isMain": false
-    },
-    {
-      "id": "rest-home",
-      "time": "13:30",
-      "task": "Rest/Quiet Time",
-      "icon": "PauseCircle",
-      "color": "green",
-      "mascot": "Zee",
+      "color": "yellow",
+      "mascot": "Bubbles",
       "isMain": false
     },
     {
       "id": "learning-home",
       "time": "15:00",
-      "task": "Learning Activity",
+      "task": "Learning Time",
       "icon": "BookOpen",
       "color": "blue",
       "mascot": "Jeff",
-      "isMain": true
-    },
-    {
-      "id": "outdoor-time",
-      "time": "16:30",
-      "task": "Outdoor Play",
-      "icon": "TreePine",
-      "color": "green",
-      "mascot": "Fuse",
       "isMain": true
     },
     {
@@ -164,36 +92,24 @@
       "time": "18:30",
       "task": "Dinner Time",
       "icon": "Utensils",
-      "color": "cyan",
-      "mascot": "Newt",
+      "color": "yellow",
+      "mascot": "Bubbles",
       "isMain": false
     },
     {
-      "id": "bath-home",
+      "id": "bedtime-home",
       "time": "20:00",
-      "task": "Bath & Bedtime Routine",
-      "icon": "Bath",
-      "color": "blue",
-      "mascot": "Newt",
-      "isMain": false
-    },
-    {
-      "id": "sleep-home",
-      "time": "21:00",
-      "task": "Sleep Time",
+      "task": "Bedtime Routine",
       "icon": "Moon",
-      "color": "indigo",
+      "color": "blue",
       "mascot": "Zee",
       "isMain": false
     }
   ],
   "mascots": [
-    { "name": "Fuse", "color": "red", "emoji": "⚽" },
-    { "name": "Pogo", "color": "blue", "emoji": "🚗" },
-    { "name": "Newt", "color": "pink", "emoji": "🍽️" },
+    { "name": "Fuse", "color": "green", "emoji": "⚽" },
     { "name": "Bubbles", "color": "yellow", "emoji": "🎓" },
     { "name": "Zee", "color": "green", "emoji": "🌟" },
-    { "name": "Slick", "color": "orange", "emoji": "🥐" },
-    { "name": "Jeff", "color": "purple", "emoji": "📚" }
+    { "name": "Jeff", "color": "blue", "emoji": "📚" }
   ]
 }
