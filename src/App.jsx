@@ -113,8 +113,6 @@ const App = () => {
   const [error, setError] = useState(null);
   const [selectedProfile, setSelectedProfile] = useState(null);
   const [scheduleType, setScheduleType] = useState(null);
-  const [scheduleType, setScheduleType] = useState(null);
-  const [scheduleType, setScheduleType] = useState(null);
   
   // Timer State
   const [activeTimerId, setActiveTimerId] = useState(null);
