@@ -5,12 +5,21 @@
   "color": "indigo",
   "schoolActivities": [
     {
+      "id": "catch-bus",
+      "time": "07:15",
+      "task": "Catch School Bus",
+      "icon": "Car",
+      "color": "orange",
+      "mascot": "Pogo",
+      "isMain": false
+    },
+    {
       "id": "arrival",
       "time": "08:00",
       "task": "Arrive at School",
-      "icon": "Car",
+      "icon": "BookOpen",
       "color": "blue",
-      "mascot": "Pogo",
+      "mascot": "Jeff",
       "isMain": false
     },
     {
@@ -23,8 +32,17 @@
       "isMain": false
     },
     {
-      "id": "class-1",
+      "id": "breakfast-school",
       "time": "08:30",
+      "task": "Breakfast Time",
+      "icon": "Coffee",
+      "color": "orange",
+      "mascot": "Slick",
+      "isMain": false
+    },
+    {
+      "id": "class-1",
+      "time": "09:00",
       "task": "First Class",
       "icon": "BookOpen",
       "color": "blue",
@@ -33,7 +51,7 @@
     },
     {
       "id": "class-2",
-      "time": "09:30",
+      "time": "10:00",
       "task": "Second Class",
       "icon": "Pencil",
       "color": "purple",
@@ -42,7 +60,7 @@
     },
     {
       "id": "snack-break",
-      "time": "10:30",
+      "time": "11:00",
       "task": "Snack Break",
       "icon": "Apple",
       "color": "green",
@@ -51,44 +69,26 @@
     },
     {
       "id": "class-3",
-      "time": "10:45",
+      "time": "11:15",
       "task": "Third Class",
       "icon": "Calculator",
-      "color": "orange",
+      "color": "indigo",
       "mascot": "Bubbles",
       "isMain": true
     },
     {
-      "id": "class-4",
-      "time": "11:45",
-      "task": "Fourth Class",
-      "icon": "BookOpen",
-      "color": "indigo",
-      "mascot": "Jeff",
-      "isMain": true
-    },
-    {
-      "id": "lunch-school",
+      "id": "school-end",
       "time": "12:30",
-      "task": "Lunch at School",
-      "icon": "Utensils",
+      "task": "School Ends",
+      "icon": "Bell",
       "color": "cyan",
-      "mascot": "Newt",
+      "mascot": "Bubbles",
       "isMain": false
     },
     {
-      "id": "play-school",
-      "time": "13:00",
-      "task": "Playground Time",
-      "icon": "Trophy",
-      "color": "yellow",
-      "mascot": "Fuse",
-      "isMain": false
-    },
-    {
-      "id": "departure",
-      "time": "13:30",
-      "task": "Go Home",
+      "id": "bus-home",
+      "time": "12:40",
+      "task": "School Bus Home",
       "icon": "Car",
       "color": "red",
       "mascot": "Pogo",
