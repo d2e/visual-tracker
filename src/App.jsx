@@ -929,6 +929,15 @@ const App = () => {
       {/* Traffic Light Sensory System */}
       <TrafficLightSensory />
 
+      {/* Floating Stars Counter */}
+      <div className="fixed left-4 top-24 z-40 bg-gradient-to-br from-yellow-300 to-yellow-400 text-yellow-900 px-4 py-3 rounded-2xl shadow-2xl border-4 border-yellow-500 animate-bounce">
+        <div className="flex flex-col items-center gap-1">
+          <Star className="w-8 h-8 sm:w-10 sm:h-10 fill-current animate-spin" style={{ animationDuration: '3s' }} />
+          <span className="text-2xl sm:text-3xl font-black">{totalStars}</span>
+          <span className="text-xs font-bold uppercase tracking-wide">Stars</span>
+        </div>
+      </div>
+
       {/* Communication Helper Button */}
       <button
         onClick={() => setShowCommunicationHelper(true)}
@@ -959,12 +968,6 @@ const App = () => {
             >
               <Settings className="w-4 h-4 sm:w-5 sm:h-5" />
             </button>
-            
-            {/* Stars Display */}
-            <div className="absolute top-2 left-2 sm:top-3 sm:left-3 flex items-center gap-1 bg-yellow-400 text-yellow-900 px-2 py-1 rounded-lg font-black text-sm">
-              <Star className="w-4 h-4 fill-current" />
-              <span>{totalStars}</span>
-            </div>
 
             <div className="flex items-center justify-between gap-2 sm:gap-0">
               <button 
