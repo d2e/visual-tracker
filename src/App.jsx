@@ -412,7 +412,6 @@ const App = () => {
               // Trigger fireworks for completing all activities
               setShowFireworks(true);
               playSound('star');
-              setTimeout(() => setShowFireworks(false), 10000);
             } else {
               // After 2 seconds, move focus to next activity
               setTimeout(() => {
@@ -483,7 +482,6 @@ const App = () => {
       if (allComplete) {
         setShowFireworks(true);
         playSound('star');
-        setTimeout(() => setShowFireworks(false), 10000);
       }
     }
     
@@ -977,7 +975,10 @@ const App = () => {
     <div className="min-h-screen bg-sky-100 p-2 sm:p-4 md:p-8 lg:p-12 font-sans pb-20">
       {/* Fireworks Celebration - All Activities Complete */}
       {showFireworks && (
-        <div className="fixed inset-0 pointer-events-none z-[100] overflow-hidden bg-black/30">
+        <div 
+          className="fixed inset-0 z-[100] overflow-hidden bg-black/95 cursor-pointer"
+          onClick={() => setShowFireworks(false)}
+        >
           {/* Flying Rockets */}
           {[...Array(6)].map((_, i) => (
             <div
