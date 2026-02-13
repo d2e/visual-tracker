@@ -630,7 +630,7 @@ const App = () => {
   const currentProfile = { ...selectedProfile, activities: currentActivities };
   const completedCount = currentActivities.filter(item => completedItems[`${currentDay}-${item.id}`]).length;
   const progressPercent = currentActivities.length > 0 ? (completedCount / currentActivities.length) * 100 : 0;
-  const totalStars = stars[`${currentProfile.id}-${currentDay}`] || 0;
+  const totalStars = completedCount; // 1 star per completed activity
   
   // Find next incomplete activity
   const nextActivity = currentActivities.find(item => !completedItems[`${currentDay}-${item.id}`]);
