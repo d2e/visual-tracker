@@ -27,3 +27,50 @@
   background-size: 200% 200%;
   animation: gradient-shift 3s ease infinite;
 }
+
+@keyframes rocket-fly {
+  0% {
+    transform: translate(0, 0) rotate(45deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(100vw, -100vh) rotate(45deg);
+    opacity: 0;
+  }
+}
+
+@keyframes rocket-fly-reverse {
+  0% {
+    transform: translate(0, 0) rotate(-45deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-100vw, -100vh) rotate(-45deg);
+    opacity: 0;
+  }
+}
+
+@keyframes spark-trail {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+@keyframes explode {
+  0% {
+    transform: translate(0, 0) scale(0);
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--tx), var(--ty)) scale(1);
+    opacity: 0;
+  }
+}

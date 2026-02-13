@@ -952,21 +952,94 @@ const App = () => {
     <div className="min-h-screen bg-sky-100 p-2 sm:p-4 md:p-8 lg:p-12 font-sans pb-20">
       {/* Fireworks Celebration - All Activities Complete */}
       {showFireworks && (
-        <div className="fixed inset-0 pointer-events-none z-[100] overflow-hidden">
-          {/* Fireworks particles */}
-          {[...Array(20)].map((_, i) => (
+        <div className="fixed inset-0 pointer-events-none z-[100] overflow-hidden bg-black/30">
+          {/* Flying Rockets */}
+          {[...Array(6)].map((_, i) => (
             <div
-              key={i}
-              className="absolute w-4 h-4 rounded-full animate-ping"
+              key={`rocket-${i}`}
+              className="absolute"
+              style={{
+                left: i % 2 === 0 ? '0%' : '100%',
+                top: `${20 + i * 15}%`,
+                animation: i % 2 === 0 ? 'rocket-fly 2s ease-out forwards' : 'rocket-fly-reverse 2s ease-out forwards',
+                animationDelay: `${i * 0.3}s`
+              }}
+            >
+              {/* Rocket body */}
+              <div className="relative">
+                <div 
+                  className="w-8 h-12 rounded-full"
+                  style={{
+                    background: `linear-gradient(135deg, ${['#ff6b6b', '#4ecdc4', '#ffe66d', '#a8e6cf', '#ff8b94', '#ffd93d'][i % 6]} 0%, #fff 100%)`,
+                    boxShadow: `0 0 20px ${['#ff6b6b', '#4ecdc4', '#ffe66d', '#a8e6cf', '#ff8b94', '#ffd93d'][i % 6]}`
+                  }}
+                />
+                {/* Spark trail */}
+                {[...Array(8)].map((_, j) => (
+                  <div
+                    key={`spark-${j}`}
+                    className="absolute w-2 h-2 rounded-full"
+                    style={{
+                      backgroundColor: ['#ff6b6b', '#ffe66d', '#fff'][j % 3],
+                      left: '50%',
+                      top: '100%',
+                      animation: 'spark-trail 0.5s ease-out infinite',
+                      animationDelay: `${j * 0.1}s`,
+                      transform: `translateX(-50%) translateY(${j * 8}px)`,
+                      opacity: 1 - j * 0.12
+                    }}
+                  />
+                ))}
+              </div>
+            </div>
+          ))}
+          
+          {/* Explosion Bursts */}
+          {[...Array(5)].map((_, i) => (
+            <div
+              key={`burst-${i}`}
+              className="absolute"
+              style={{
+                left: `${20 + i * 15}%`,
+                top: `${10 + i * 12}%`
+              }}
+            >
+              {[...Array(12)].map((_, j) => {
+                const angle = (j * 30) * Math.PI / 180;
+                const distance = 100;
+                return (
+                  <div
+                    key={`particle-${j}`}
+                    className="absolute w-3 h-3 rounded-full"
+                    style={{
+                      backgroundColor: ['#ff6b6b', '#4ecdc4', '#ffe66d', '#a8e6cf', '#ff8b94', '#ffd93d'][j % 6],
+                      animation: 'explode 1.5s ease-out forwards',
+                      animationDelay: `${0.5 + i * 0.3}s`,
+                      '--tx': `${Math.cos(angle) * distance}px`,
+                      '--ty': `${Math.sin(angle) * distance}px`,
+                      boxShadow: `0 0 10px ${['#ff6b6b', '#4ecdc4', '#ffe66d', '#a8e6cf', '#ff8b94', '#ffd93d'][j % 6]}`
+                    }}
+                  />
+                );
+              })}
+            </div>
+          ))}
+          
+          {/* Falling sparkles */}
+          {[...Array(30)].map((_, i) => (
+            <div
+              key={`sparkle-${i}`}
+              className="absolute w-1 h-1 bg-white rounded-full"
               style={{
                 left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                backgroundColor: ['#ff6b6b', '#4ecdc4', '#ffe66d', '#a8e6cf', '#ff8b94'][i % 5],
-                animationDelay: `${Math.random() * 2}s`,
-                animationDuration: `${1 + Math.random()}s`
+                top: `${-10}%`,
+                animation: `spark-trail ${2 + Math.random() * 2}s linear infinite`,
+                animationDelay: `${Math.random() * 3}s`,
+                transform: `translateY(${100 + Math.random() * 50}vh)`
               }}
             />
           ))}
+          
           {/* Main celebration message */}
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-white px-8 py-6 rounded-3xl shadow-2xl animate-bounce">
