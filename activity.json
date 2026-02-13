@@ -1,0 +1,86 @@
+{
+  "title": "Aahan",
+  "activities": [
+    {
+      "id": "breakfast",
+      "time": "07:30",
+      "task": "Breakfast Time",
+      "icon": "Coffee",
+      "color": "orange",
+      "mascot": "Slick",
+      "isMain": false
+    },
+    {
+      "id": "study",
+      "time": "08:15",
+      "task": "Specific Study",
+      "icon": "BookOpen",
+      "color": "blue",
+      "mascot": "Jeff",
+      "isMain": false
+    },
+    {
+      "id": "break1",
+      "time": "09:00",
+      "task": "Short Break",
+      "icon": "PauseCircle",
+      "color": "green",
+      "mascot": "Zee",
+      "isMain": false
+    },
+    {
+      "id": "math",
+      "time": "09:15",
+      "task": "Math Activity",
+      "icon": "Calculator",
+      "color": "purple",
+      "mascot": "Bubbles",
+      "isMain": true
+    },
+    {
+      "id": "break2",
+      "time": "10:00",
+      "task": "Snack & Break",
+      "icon": "PauseCircle",
+      "color": "green",
+      "mascot": "Zee",
+      "isMain": false
+    },
+    {
+      "id": "sports",
+      "time": "10:30",
+      "task": "Sports Play",
+      "icon": "Trophy",
+      "color": "yellow",
+      "mascot": "Fuse",
+      "isMain": true
+    },
+    {
+      "id": "lunch",
+      "time": "11:30",
+      "task": "Lunch & Ready",
+      "icon": "Utensils",
+      "color": "cyan",
+      "mascot": "Newt",
+      "isMain": false
+    },
+    {
+      "id": "departure",
+      "time": "12:30",
+      "task": "Leaving for School",
+      "icon": "Car",
+      "color": "red",
+      "mascot": "Pogo",
+      "isMain": false
+    }
+  ],
+  "mascots": [
+    { "name": "Fuse", "color": "red", "emoji": "🔴" },
+    { "name": "Pogo", "color": "blue", "emoji": "🔵" },
+    { "name": "Newt", "color": "pink", "emoji": "💗" },
+    { "name": "Bubbles", "color": "yellow", "emoji": "💛" },
+    { "name": "Zee", "color": "green", "emoji": "💚" },
+    { "name": "Slick", "color": "orange", "emoji": "🟠" },
+    { "name": "Jeff", "color": "purple", "emoji": "💜" }
+  ]
+}
