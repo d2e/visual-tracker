@@ -379,10 +379,19 @@ const App = () => {
       }, 1000);
     } else if (timeLeft === 0 && timerRunning) {
       setTimerRunning(false);
+      
+      // Auto-complete the activity when timer ends
+      if (activeTimerId) {
+        const key = `${currentDay}-${activeTimerId}`;
+        if (!completedItems[key]) {
+          toggleTask(currentDay, activeTimerId);
+        }
+      }
+      
       setActiveTimerId(null);
     }
     return () => clearInterval(interval);
-  }, [timerRunning, timeLeft, show5MinWarning]);
+  }, [timerRunning, timeLeft, show5MinWarning, activeTimerId, currentDay, completedItems]);
 
   const startTaskTimer = (id, mins) => {
     setActiveTimerId(id);
