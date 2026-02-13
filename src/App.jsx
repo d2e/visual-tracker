@@ -551,8 +551,8 @@ const App = () => {
     );
   }
 
-  // Ensure we have a valid profile before rendering tracker
-  if (!selectedProfile) {
+  // Ensure we have a valid profile and schedule type before rendering tracker
+  if (!selectedProfile || !scheduleType) {
     return null;
   }
 
