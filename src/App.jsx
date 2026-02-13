@@ -1057,14 +1057,154 @@ const App = () => {
         </div>
       )}
 
-      {/* Celebration Overlay */}
+      {/* Celebration Overlay - Flying Firecrackers */}
       {showCelebration && (
-        <div className="fixed inset-0 pointer-events-none z-50 flex items-center justify-center">
-          <div className={`text-8xl ${settings.animationsEnabled ? 'animate-bounce' : ''}`}>
-            🌟⭐✨
+        <div className="fixed inset-0 z-50 flex items-center justify-center">
+          {/* Dark background overlay */}
+          <div className="absolute inset-0 bg-black/80" />
+          
+          {/* Flying firecrackers */}
+          <div className="absolute inset-0 overflow-hidden">
+            {/* Rocket 1 - Left side */}
+            <div 
+              className="absolute bottom-0 left-1/4 w-2 h-8 bg-gradient-to-t from-red-500 via-orange-400 to-yellow-300 rounded-full"
+              style={{
+                animation: 'rocketFly 1.5s ease-out forwards',
+                boxShadow: '0 0 20px rgba(255, 100, 0, 0.8)'
+              }}
+            >
+              {/* Spark trail */}
+              {[...Array(8)].map((_, i) => (
+                <div
+                  key={i}
+                  className="absolute w-1 h-1 rounded-full bg-yellow-400"
+                  style={{
+                    bottom: `-${i * 8}px`,
+                    left: '50%',
+                    transform: 'translateX(-50%)',
+                    opacity: 1 - i * 0.12,
+                    animation: `sparkle ${0.3 + i * 0.1}s infinite`
+                  }}
+                />
+              ))}
+            </div>
+            
+            {/* Rocket 2 - Center */}
+            <div 
+              className="absolute bottom-0 left-1/2 w-2 h-8 bg-gradient-to-t from-blue-500 via-cyan-400 to-white rounded-full"
+              style={{
+                animation: 'rocketFly 1.8s ease-out 0.3s forwards',
+                boxShadow: '0 0 20px rgba(0, 150, 255, 0.8)'
+              }}
+            >
+              {/* Spark trail */}
+              {[...Array(8)].map((_, i) => (
+                <div
+                  key={i}
+                  className="absolute w-1 h-1 rounded-full bg-cyan-300"
+                  style={{
+                    bottom: `-${i * 8}px`,
+                    left: '50%',
+                    transform: 'translateX(-50%)',
+                    opacity: 1 - i * 0.12,
+                    animation: `sparkle ${0.3 + i * 0.1}s infinite`
+                  }}
+                />
+              ))}
+            </div>
+            
+            {/* Rocket 3 - Right side */}
+            <div 
+              className="absolute bottom-0 right-1/4 w-2 h-8 bg-gradient-to-t from-purple-500 via-pink-400 to-white rounded-full"
+              style={{
+                animation: 'rocketFly 1.6s ease-out 0.6s forwards',
+                boxShadow: '0 0 20px rgba(200, 0, 255, 0.8)'
+              }}
+            >
+              {/* Spark trail */}
+              {[...Array(8)].map((_, i) => (
+                <div
+                  key={i}
+                  className="absolute w-1 h-1 rounded-full bg-pink-300"
+                  style={{
+                    bottom: `-${i * 8}px`,
+                    left: '50%',
+                    transform: 'translateX(-50%)',
+                    opacity: 1 - i * 0.12,
+                    animation: `sparkle ${0.3 + i * 0.1}s infinite`
+                  }}
+                />
+              ))}
+            </div>
+            
+            {/* Explosion bursts at top */}
+            {[...Array(15)].map((_, i) => {
+              const angle = (i * 360) / 15;
+              const color = ['#ff6b6b', '#4ecdc4', '#ffe66d', '#a8e6cf', '#ff8b94'][i % 5];
+              return (
+                <div
+                  key={`burst-${i}`}
+                  className="absolute w-3 h-3 rounded-full"
+                  style={{
+                    top: '20%',
+                    left: '50%',
+                    backgroundColor: color,
+                    animation: `burst 1s ease-out ${1.5 + (i % 3) * 0.3}s forwards`,
+                    transform: `rotate(${angle}deg)`,
+                    boxShadow: `0 0 15px ${color}`
+                  }}
+                />
+              );
+            })}
+          </div>
+          
+          {/* Celebration text */}
+          <div className="relative z-10 text-center">
+            <div className="text-6xl sm:text-7xl md:text-8xl animate-pulse mb-4">
+              🌟⭐✨
+            </div>
           </div>
         </div>
       )}
+
+      <style jsx>{`
+        @keyframes rocketFly {
+          0% {
+            transform: translateY(0) scale(1);
+            opacity: 1;
+          }
+          80% {
+            transform: translateY(-70vh) scale(1.2);
+            opacity: 1;
+          }
+          100% {
+            transform: translateY(-80vh) scale(0);
+            opacity: 0;
+          }
+        }
+        
+        @keyframes sparkle {
+          0%, 100% {
+            opacity: 1;
+            transform: scale(1);
+          }
+          50% {
+            opacity: 0.3;
+            transform: scale(0.5);
+          }
+        }
+        
+        @keyframes burst {
+          0% {
+            transform: translate(-50%, -50%) rotate(var(--angle, 0deg)) translateY(0) scale(1);
+            opacity: 1;
+          }
+          100% {
+            transform: translate(-50%, -50%) rotate(var(--angle, 0deg)) translateY(-200px) scale(0);
+            opacity: 0;
+          }
+        }
+      `}</style>
 
       {/* 5-Minute Warning */}
       {show5MinWarning && <FiveMinuteWarning />}
