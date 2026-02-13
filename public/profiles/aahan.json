@@ -5,8 +5,17 @@
   "color": "indigo",
   "activities": [
     {
+      "id": "wakeup",
+      "time": "06:30",
+      "task": "Wake Up & Get Ready",
+      "icon": "Sun",
+      "color": "orange",
+      "mascot": "Zee",
+      "isMain": false
+    },
+    {
       "id": "breakfast",
-      "time": "07:30",
+      "time": "07:00",
       "task": "Breakfast Time",
       "icon": "Coffee",
       "color": "orange",
@@ -14,66 +23,183 @@
       "isMain": false
     },
     {
-      "id": "study",
-      "time": "08:15",
-      "task": "Specific Study",
-      "icon": "BookOpen",
+      "id": "get-dressed",
+      "time": "07:20",
+      "task": "Get Dressed & Pack Bag",
+      "icon": "Bed",
       "color": "blue",
       "mascot": "Jeff",
       "isMain": false
     },
     {
-      "id": "break1",
-      "time": "09:00",
-      "task": "Short Break",
-      "icon": "PauseCircle",
+      "id": "travel-to-school",
+      "time": "07:40",
+      "task": "Travel to School",
+      "icon": "Car",
+      "color": "red",
+      "mascot": "Pogo",
+      "isMain": false
+    },
+    {
+      "id": "morning-classes",
+      "time": "08:00",
+      "task": "Morning Classes",
+      "icon": "BookOpen",
+      "color": "blue",
+      "mascot": "Jeff",
+      "isMain": true
+    },
+    {
+      "id": "snack-break",
+      "time": "10:00",
+      "task": "Snack Break",
+      "icon": "Apple",
       "color": "green",
       "mascot": "Zee",
       "isMain": false
     },
     {
-      "id": "math",
-      "time": "09:15",
-      "task": "Math Activity",
-      "icon": "Calculator",
+      "id": "more-learning",
+      "time": "10:15",
+      "task": "More Learning",
+      "icon": "BookOpen",
       "color": "purple",
       "mascot": "Bubbles",
       "isMain": true
     },
     {
-      "id": "break2",
-      "time": "10:00",
-      "task": "Snack & Break",
-      "icon": "PauseCircle",
-      "color": "green",
-      "mascot": "Zee",
+      "id": "travel-home",
+      "time": "12:30",
+      "task": "Travel Home",
+      "icon": "Car",
+      "color": "red",
+      "mascot": "Pogo",
       "isMain": false
     },
     {
-      "id": "sports",
-      "time": "10:30",
-      "task": "Sports Play",
-      "icon": "Trophy",
-      "color": "yellow",
-      "mascot": "Fuse",
-      "isMain": true
-    },
-    {
       "id": "lunch",
-      "time": "11:30",
-      "task": "Lunch & Ready",
+      "time": "12:50",
+      "task": "Lunch Time",
       "icon": "Utensils",
       "color": "cyan",
       "mascot": "Newt",
       "isMain": false
     },
     {
-      "id": "departure",
-      "time": "12:30",
-      "task": "Leaving for School",
-      "icon": "Car",
-      "color": "red",
-      "mascot": "Pogo",
+      "id": "rest-time",
+      "time": "13:20",
+      "task": "Rest/Quiet Time",
+      "icon": "PauseCircle",
+      "color": "green",
+      "mascot": "Zee",
+      "isMain": false
+    },
+    {
+      "id": "homework",
+      "time": "14:00",
+      "task": "Homework Time",
+      "icon": "Pencil",
+      "color": "purple",
+      "mascot": "Jeff",
+      "isMain": true
+    },
+    {
+      "id": "snack",
+      "time": "15:00",
+      "task": "Snack Time",
+      "icon": "Apple",
+      "color": "yellow",
+      "mascot": "Slick",
+      "isMain": false
+    },
+    {
+      "id": "play-time",
+      "time": "15:15",
+      "task": "Play Time",
+      "icon": "Gamepad2",
+      "color": "yellow",
+      "mascot": "Fuse",
+      "isMain": true
+    },
+    {
+      "id": "reading",
+      "time": "16:15",
+      "task": "Reading Time",
+      "icon": "BookOpen",
+      "color": "blue",
+      "mascot": "Jeff",
+      "isMain": false
+    },
+    {
+      "id": "free-time",
+      "time": "16:45",
+      "task": "Free Time/Activities",
+      "icon": "Smile",
+      "color": "pink",
+      "mascot": "Bubbles",
+      "isMain": false
+    },
+    {
+      "id": "dinner",
+      "time": "18:00",
+      "task": "Dinner Time",
+      "icon": "Utensils",
+      "color": "cyan",
+      "mascot": "Newt",
+      "isMain": false
+    },
+    {
+      "id": "family-time",
+      "time": "18:30",
+      "task": "Family Time",
+      "icon": "Heart",
+      "color": "pink",
+      "mascot": "Bubbles",
+      "isMain": false
+    },
+    {
+      "id": "bath",
+      "time": "19:30",
+      "task": "Bath Time",
+      "icon": "Bath",
+      "color": "blue",
+      "mascot": "Newt",
+      "isMain": false
+    },
+    {
+      "id": "get-ready-bed",
+      "time": "19:50",
+      "task": "Get Ready for Bed",
+      "icon": "Bed",
+      "color": "purple",
+      "mascot": "Zee",
+      "isMain": false
+    },
+    {
+      "id": "story-time",
+      "time": "20:00",
+      "task": "Story Time",
+      "icon": "BookOpen",
+      "color": "indigo",
+      "mascot": "Jeff",
+      "isMain": false
+    },
+    {
+      "id": "bedtime-routine",
+      "time": "20:30",
+      "task": "Bedtime Routine",
+      "icon": "Moon",
+      "color": "purple",
+      "mascot": "Zee",
+      "isMain": false
+    },
+    {
+      "id": "sleep",
+      "time": "21:00",
+      "task": "Sleep Time",
+      "icon": "Moon",
+      "color": "indigo",
+      "mascot": "Zee",
       "isMain": false
     }
   ],
