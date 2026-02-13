@@ -930,11 +930,23 @@ const App = () => {
       <TrafficLightSensory />
 
       {/* Floating Stars Counter */}
-      <div className="fixed left-4 top-24 z-40 bg-gradient-to-br from-yellow-300 to-yellow-400 text-yellow-900 px-4 py-3 rounded-2xl shadow-2xl border-4 border-yellow-500 animate-bounce">
-        <div className="flex flex-col items-center gap-1">
-          <Star className="w-8 h-8 sm:w-10 sm:h-10 fill-current animate-spin" style={{ animationDuration: '3s' }} />
-          <span className="text-2xl sm:text-3xl font-black">{totalStars}</span>
-          <span className="text-xs font-bold uppercase tracking-wide">Stars</span>
+      <div className="fixed left-4 top-24 z-40 bg-gradient-to-br from-yellow-300 to-yellow-400 text-yellow-900 px-4 py-3 rounded-2xl shadow-2xl border-4 border-yellow-500">
+        <div className="flex flex-col items-center gap-2">
+          {/* Stars Display */}
+          <div className="flex flex-col items-center">
+            <Star className="w-8 h-8 sm:w-10 sm:h-10 fill-current animate-spin" style={{ animationDuration: '3s' }} />
+            <span className="text-2xl sm:text-3xl font-black">{totalStars}</span>
+            <span className="text-xs font-bold uppercase tracking-wide">Stars</span>
+          </div>
+          
+          {/* Tokens Display */}
+          <div className="w-full border-t-2 border-yellow-500 pt-2">
+            <div className="flex flex-col items-center">
+              <Gift className="w-6 h-6 sm:w-8 sm:h-8" />
+              <span className="text-xl sm:text-2xl font-black">{Math.min(tokens, 10)}/10</span>
+              <span className="text-xs font-bold uppercase tracking-wide">Tokens</span>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -1011,9 +1023,6 @@ const App = () => {
         <div className="p-3 sm:p-4 md:p-6 lg:p-8 space-y-3 sm:space-y-4 md:space-y-6 bg-slate-50/50">
           {/* First-Then-Next Visual Board */}
           <FirstThenNext />
-
-          {/* Token Board */}
-          <TokenBoard />
 
           {/* What's Next Preview */}
           {nextActivity && (
